@@ -1,0 +1,62 @@
+% keisoku_report.tex  計測制御のレポートの雛型
+¥documentclass{jarticle}
+¥usepackage{listings,jlisting}  % ソースコードを行番号付きで載せるパッケージ
+¥usepackage{color}              % 色付けするパッケージ
+¥usepackage{graphicx}           % 画像を張り込むパッケージ
+¥setlength{¥topmargin}{0mm}
+¥setlength{¥oddsidemargin}{0mm}
+¥setlength{¥textwidth}{16cm}
+¥setlength{¥textheight}{23cm}
+
+%¥renewcommand{¥lstlistingname}{リスト} % 「ソースコード」を変更する
+¥lstset{language=C,% ソースの種類の指定
+        basicstyle=¥footnotesize,% リスト全体の設定
+        commentstyle=¥color{blue}¥textit,% コメント部分の設定
+        keywordstyle=¥textbf,%  C言語の予約語(if,for,while等)の設定
+        %keywordstyle=¥color{red}¥bfseries,%
+        classoffset=1,%
+        breakindent=20pt,%    改行時インデント量。デフォルト：20pt。
+        breaklines=true,%   行が長くなってしまった場合の改行。
+        frame=tlRB,framesep=7pt,% frame は top,left,right,bottom の1文字で指定、大文字は二重線
+        showstringspaces=false,% string 中のスペースを記号表示するか
+        numbers=left,% 行番号を付ける位置
+        %stepnumber=2,%  何行ごとに行番号を表示するか デフォルトは 1
+        numberstyle=¥scriptsize¥color{blue}% 行番号の表示スタイル
+        }%
+
+¥begin{document}
+
+¥section{実験の目的}
+
+本実験の目的は、プログラミング言語としては C言語を用い、
+計算機から外部機器を制御する基本的な考え方とその方法を学ぶことである。
+
+¥section{実験１}
+
+私が、初めて作った C のプログラムを、リスト¥ref{hello} に示します。
+% 次のように、lstlisting 環境でソースプログラムをはさむ
+% label で指定した名前を、本文中で ¥ref で引用する
+¥begin{lstlisting}[caption=始めてのプログラム,label=hello]
+/* はじめてのプログラム */
+/* 1st C program */
+#include
+main( )
+{
+    printf("Hello World !!¥n") ;
+}
+¥end{lstlisting}
+
+私が、次に作った C のプログラムが、ソースリスト¥ref{list:on-led}です。
+
+% 次のように、¥lstinputlisting で外部ファイルを指定することもできる。
+% この場合は、元のソースが変更されても、自動的に変更される。
+¥lstinputlisting[caption=LEDを点灯,label=list:on-led]{c_pro/on_led.c}
+
+gnuplot で作成した sin($x$) 関数を、図¥ref{fig:sin} に示す。
+¥begin{figure}[ht]
+¥includegraphics[width=0.8¥textwidth]{fig/fig1.eps}
+¥caption{sin関数}
+¥label{fig:sin}
+¥end{figure}
+
+¥end{document}
